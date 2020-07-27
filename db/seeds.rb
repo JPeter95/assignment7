@@ -1,5 +1,7 @@
-# Job.destroy_all
-# PersonalInfo.destroy_all
+Tag.destroy_all
+TodoItem.destroy_all
+TodoList.destroy_all
+Account.destroy_all
 User.destroy_all
 
 User.create! [
@@ -12,12 +14,28 @@ User.create! [
   { login: "john", password: "secret" }
 ]
 
-# Person.first.jobs.create! [
-#   { title: 'Sr. Developer', company: 'Microsoft', position_id: '#1234' },
-#   { title: 'Player', company: 'NBA', position_id: '#positionless' }
-# ]
+user1 = User.first
+user1.create_account! gender: 'male', age: 33, first_name: 'LeBron', last_name: 'James'
+user1.todo_lists.create! [
+  { list_name: 'Disney', list_due_date: '2020-08-01 00:39:20' },
+  { list_name: 'Christmas', list_due_date: '2020-12-25 00:39:20' }
+]
+user1.todo_lists[0].todo_items.create! [
+  { due_date: '2020-07-28 00:39:20', task_title: "Buy tickets", description: "Go to Disney.com and buy 2 tickets" },
+  { due_date: '2020-07-29 00:39:20', task_title: "Schedule trip", description: "Schedule plan of where to go at Disney" }
+]
+user1.todo_lists[1].todo_items.create! [
+  { due_date: '2020-12-24 00:39:20', task_title: "Buy Xmas gifts", description: "Buy everyone a $20 Amazon gift card" }
+]
 
-# Person.last.jobs.create! [
-#   { title: 'Duplication Specialist', company: 'SSA', position_id: '#333' },
-#   { title: 'Sr. Developer', company: 'Microsoft', position_id: '#2234' }
-# ]
+Tag.create! [
+  { tag_name: "holidays" },
+  { tag_name: "vacations" },
+  { tag_name: "recreation" }
+]
+
+tag1 = Tag.first
+user1.todo_lists[1].todo_items[0].tags << tag1
+
+tag2 = Tag.last
+tag2.todo_items << user1.todo_lists[0].todo_items[0]
