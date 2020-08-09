@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_023253) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "accounts", "users"
   add_foreign_key "tags_todo_items", "tags"
   add_foreign_key "tags_todo_items", "todo_items"
   add_foreign_key "todo_items", "todo_lists"
