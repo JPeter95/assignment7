@@ -1,4 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="todo_list">
+	<span class="todo_list_link"><%= "#{ @todo_list.list_due_date } (#{@todo_list.list_name})" %></span>
+</div>
+<p />
 
-<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
-<%= link_to 'Back', todo_lists_path %>
+<div id="todo_items">
+	<%= render @todo_list.todo_items %>
+</div>
+
+<%= link_to 'Edit Todo List', edit_todo_list_path(@todo_list) %> |
+<%= link_to 'Delete Todo List', @todo_list, method: :delete, 
+      data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back To Todo Lists', todo_lists_path %>

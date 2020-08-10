@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
+<div class="todo_list">
+	<span class="todo_list_link"><%= "#{ @account.first_name } (#{@account.last_name})" %></span>
+</div>
+<p />
 
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<%= link_to 'Edit Account Info', edit_account_path(@account) %> |
+<%= link_to 'Back to Home', todo_lists_path %>

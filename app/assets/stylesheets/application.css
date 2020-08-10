@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+ body {
+ 	padding: 15px;
+ }  
+
+ .todo_list {
+ 	padding-top: 20px;
+ }
+
+ .todo_list_link {
+ 	font: bold 15px arial, sans-serif;
+ }
+
+ #todo_items {
+ 	padding-left: 15px;
+ }
+
+ .todo_item {
+ 	background-color: lightgray;
+ 	padding: 10px;
+ 	margin: 10px;
+ 	border: 1px solid;
+ 	border-radius: 15px;
+ 	width: 400px;
+ }
+
+ textarea {
+ 	margin-bottom: -3px;
+ }
+
+ .field, .actions {
+ 	padding-bottom: 10px;
+ }
+
+ #notice { color: green; }
+ #alert { color: red; }

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
-  root :to => 'users#index'
-  resources :users
+  root :to => 'todo_lists#index'
+  resources :todo_lists do
+    resources :todo_items
+  end
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  get '/users' => "users#new", as: "users_list"
+  get '/todo_lists' => "todo_lists#index", as: "todo_lists_path"
   get '/login' => "sessions#new", as: "login"
   delete '/logout' => "sessions#destroy", as: "logout"
 end
