@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    <% if logged_in? %>
+      <div style='float: right;'>
+        <%= link_to "Home", users_list_path, method: :get %> |
+        <%= link_to "Edit Account", users_list_path, method: :get %> |
+        You are logged in as <%= current_user.login %> |
+        <%= link_to "Logout", logout_path, method: :delete %>
+      </div>
+    <% end %>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag :p, value, id: key %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
