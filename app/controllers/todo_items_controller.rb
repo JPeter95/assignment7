@@ -1,5 +1,6 @@
 class TodoItemsController < ApplicationController
-  before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo_list 
+  before_action :set_todo_item, only: [:show, :edit, :update, :destroy]
 
   # GET /todo_items
   # GET /todo_items.json
@@ -62,13 +63,17 @@ class TodoItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Use callbacks to share common setup or constraints between actions
+    def set_todo_item
+      @todo_item = @todo_list.todo_items.find(params[:id])
+    end
+
     def set_todo_list
       @todo_list = TodoList.find(params[:todo_list_id])
     end
 
     # Only allow a list of trusted parameters through.
     def todo_item_params
-      params.require(:todo_item).permit(:task_title, :due_date)
+      params.require(:todo_item).permit(:task_title, :due_date, :description, :done)
     end
 end

@@ -2,11 +2,11 @@
 
 <% @todo_items.each do |todo_item| %>
   <div class="todo_item">
-    <%= link_to "#{todo_item.due_date} (#{todo_item.task_title})", todo_item, class: "todo_item_link" %>
+    <%= link_to "#{todo_item.due_date} - #{todo_item.task_title}", todo_item, class: "todo_item_link" %>
   </div>
 <% end %>
 <p />
-<%= will_paginate @todo_items %>
-<br>
+%= will_paginate @todo_items %>
+<p />
 
 <%= link_to 'New Todo Item', new_todo_item_path %>
