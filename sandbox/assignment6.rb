@@ -41,23 +41,23 @@ puts TodoItem.pluck(:due_date)
 
 
 puts "--------------- Final Step: Show generic retrievals ---------------"
-puts "1.) Find Lebron user:"
-lebron_user = User.find_by(login: "lebron")
-puts lebron_user.inspect
+puts "1.) Find Matt user:"
+matt_user = User.find_by(login: "Matt")
+puts matt_user.inspect
 
 puts "2.) And his account info:"
-lebrons_account = Account.find_by(user_id: lebron_user.id)
-puts lebrons_account.inspect
+matts_account = Account.find_by(user_id: matt_user.id)
+puts matts_account.inspect
 
-lebrons_lists = TodoList.where(user_id: lebron_user.id).to_a
-puts "3.) Lebron has (#{lebrons_lists.size}) Todo Lists"
+matts_lists = TodoList.where(user_id: matt_user.id).to_a
+puts "3.) Matt has (#{matts_lists.size}) Todo Lists"
 
-puts "4.) Find the names of all lists (not just Lebron):"
+puts "4.) Find the names of all lists (not just Matt):"
 puts TodoList.pluck(:list_name)
 
-puts "5.) What todo items are in Lebron's (#{lebrons_lists[1].list_name}) list?"
-puts lebrons_lists[1].todo_items.pluck(:task_title)
+puts "5.) What todo items are in Matt's (#{matts_lists[0].list_name}) list?"
+puts matts_lists[0].todo_items.pluck(:task_title)
 
 puts "6.) What tags do those items have:"
-tags = Tag.where(id: lebrons_lists[1].todo_items[0].tags[0].id).to_a
+tags = Tag.where(id: matts_lists[1].todo_items[0].tags[0].id).to_a
 puts tags.inspect
