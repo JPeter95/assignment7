@@ -3,9 +3,14 @@
 <% @todo_lists.each do |todo_list| %>
   <div class="todo_list">
     <span>
-      
-      <%= "#{todo_list.list_due_date} - " %>
-    
+      <% if todo_list.todo_items.any? {|item| !item.done } %>
+        <div class="not_done">
+      <% else %>
+        <div class="done">
+      <% end %>
+      <%= "#{todo_list.list_due_date}" %>
+      </div>
+    <%= "-  " %>
     <%= link_to "#{todo_list.list_name}", todo_list, class: "todo_list_link" %>
     </span>
   </div>

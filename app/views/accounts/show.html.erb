@@ -1,7 +1,21 @@
-<div class="todo_list">
-	<span class="todo_list_link"><%= "#{ @account.first_name } (#{@account.last_name})" %></span>
-</div>
+<h1>Account Info</h1>
+
+<h3>
+  <strong>Name:</strong>
+  <%= @account.first_name %>
+  <%= @account.last_name %>
+</h3>
+
+<h3>
+  <strong>Gender:</strong>
+  <%= @account.gender %>
+</h3>
+
+<h3>
+  <strong>Age:</strong>
+  <%= @account.age %>
+</h3>
 <p />
 
-<%= link_to 'Edit Account Info', edit_account_path(@account) %> |
+<%= link_to 'Edit Account', edit_account_path(@account) %> |
 <%= link_to 'Back to Home', todo_lists_path %>

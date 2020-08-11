@@ -13,8 +13,10 @@
     <% if logged_in? %>
       <div style='float: right;'>
         <%= link_to "Home", todo_lists_path, method: :get %> |
-        <%= link_to "Edit Account", todo_lists_path, method: :get %> |
-        You are logged in as <b><%= current_user.login %></b> |
+        <span>
+          You are logged in as: <b>
+          <%= link_to "#{ current_user.login }", accounts_path, method: :get %></b> |
+        </span> 
         <%= link_to "Logout", logout_path, method: :delete %>
       </div>
     <% end %>

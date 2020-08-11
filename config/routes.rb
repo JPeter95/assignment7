@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :todo_items
   end
 
+  resources :accounts
   resources :sessions, only: [:new, :create, :destroy]
 
   get '/accounts' => "accounts#index", as: "accounts_path"
